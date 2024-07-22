@@ -1,0 +1,45 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class Location {
+    private final int locationID;
+    private final String description;
+    private final Map<String, Integer> exits;
+    private String item;
+
+    public Location(int locationID, String description, Map<String, Integer> exits) {
+        this(locationID, description, exits, null);
+    }
+
+    public Location(int locationID, String description, Map<String, Integer> exits, String item) {
+        this.locationID = locationID;
+        this.description = description;
+        this.exits = (exits != null) ? new HashMap<>(exits) : new HashMap<>();
+        this.exits.put("Q", 0);
+        this.item = item;
+    }
+
+    public int getLocationID() {
+        return locationID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Map<String, Integer> getExits() {
+        return new HashMap<>(exits);
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
+
+    public String getLongDescription() {
+        return description + (item != null ? " " + item : "");
+    }
+}
